@@ -73,7 +73,7 @@ instance FromJSON RamlBody where
         <$> v .:? "schema"
         <*> v .:? "example"
         <*> v .:? "formParameters"
-    parseJSON Null = pure $ RamlBody Nothing Nothing Nothing
+    parseJSON Null = parseJSON (Object H.empty)
     parseJSON m = fail $ "Not a valid body: " ++ show m
 
 instance FromJSON RamlResponse where
@@ -108,6 +108,7 @@ instance FromJSON RamlResource where
         <*> v .:? "delete"
         <*> toResource v
         <*> v .:? "is"
+    parseJSON Null = parseJSON (Object H.empty)
     parseJSON m = fail $ "Not a valid resource: " ++ show m
 
 instance FromJSON RamlProtocol where
