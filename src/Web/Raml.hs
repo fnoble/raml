@@ -2,8 +2,8 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 module Web.Raml
-  (
-  decode
+  ( decode
+  , decodeFile
   ) where
 
 import Control.Applicative
@@ -144,4 +144,12 @@ instance FromJSON Raml where
 -- returned, containing an error message.
 decode :: BS.ByteString -> Either Error Raml
 decode = decodeEither
+
+-- | Deserialize a RAML document from a file.
+-- If this fails due to incomplete or invalid input, 'Left e' is
+-- returned, containing an error message.
+decodeFile :: String -> IO (Either Error Raml)
+decodeFile f = do
+  raml <- BS.readFile f
+  return $ decode raml
 
