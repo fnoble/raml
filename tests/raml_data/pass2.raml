@@ -1,0 +1,16 @@
+#%RAML 0.8
+title: World Music API
+baseUri: http://example.api.com/{version}
+version: v1
+protocols: [ HTTPS ]
+documentation:
+ - title: Test
+   content: |
+     Testing 1 2 3
+ - title: Test 2
+   content: |
+     Hello there!
+mediaType: application/json
+/songs:
+  displayName: Songs!
+  description: All the songs
