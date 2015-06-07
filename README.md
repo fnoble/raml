@@ -1,6 +1,8 @@
 RAML
 ====
 
+![Build Status](https://travis-ci.org/fnoble/raml.svg?branch=master)
+
 RESTful API Modeling Language (RAML) library for Haskell
 
 TODO
